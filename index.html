@@ -23,7 +23,7 @@
       min-height: 100vh;
       animation: bgPulse 6s infinite alternate ease-in-out;
       padding: 20px;
-      transition: background-color 0.3s ease, color 0.3s ease;
+      perspective: 1000px;
     }
     @keyframes bgPulse {
       0% { background-color: #0a0a0a; }
@@ -38,11 +38,10 @@
       box-shadow: 0 0 25px rgba(72, 110, 127, 0.3);
       max-width: 500px;
       width: 100%;
-      transition: background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
-      cursor: default;
+      transition: box-shadow 0.3s ease, transform 0.2s ease;
+      transform-style: preserve-3d;
     }
     .container:hover {
-      transform: scale(1.02);
       box-shadow: 0 0 40px #486e7f, 0 0 50px #486e7f inset;
     }
     h1, h2 {
@@ -63,7 +62,7 @@
       margin: 5px 0;
       text-transform: uppercase;
     }
-    a, button {
+    a {
       display: inline-flex;
       align-items: center;
       gap: 10px;
@@ -77,11 +76,8 @@
       transition: all 0.3s ease;
       box-shadow: 0 0 8px #486e7f;
       font-weight: 600;
-      cursor: pointer;
-      font-family: 'Orbitron', sans-serif;
-      user-select: none;
     }
-    a:hover, button:hover {
+    a:hover {
       background-color: #bbb;
       color: #000;
       transform: scale(1.08);
@@ -98,46 +94,13 @@
       border-radius: 12px;
       width: 100%;
       max-width: 500px;
-      display: none; /* initially hidden for toggle */
-      transition: opacity 0.3s ease;
-    }
-    iframe.show {
-      display: block;
-      opacity: 1;
-    }
-    /* Dark/Light Mode Styles */
-    body.light {
-      background-color: #f5f5f5;
-      color: #111;
-      animation: none;
-    }
-    body.light .container {
-      background: rgba(245, 245, 245, 0.9);
-      border-color: #486e7f;
-      box-shadow: 0 0 25px rgba(72, 110, 127, 0.3);
-    }
-    body.light h1, body.light h2 {
-      color: #486e7f;
-      text-shadow: none;
-    }
-    body.light .info p {
-      color: #555;
-    }
-    body.light a, body.light button {
-      border-color: #486e7f;
-      color: #486e7f;
-      box-shadow: none;
-      background-color: transparent;
-    }
-    body.light a:hover, body.light button:hover {
-      background-color: #486e7f;
-      color: #fff;
-      transform: scale(1.08);
+      transition: filter 0.3s ease;
+      filter: none;
     }
   </style>
 </head>
 <body>
-  <div class="container">
+  <div class="container" id="linktreeContainer">
     <h1>ExitIsHere</h1>
     <h2>Linktree</h2>
 
@@ -162,58 +125,43 @@
       <img class="avatar" src="Tracker.png" alt="Valorant" /> Valorant Tracker
     </a>
 
-    <!-- Extra Button für Steam -->
-    <a href="https://store.steampowered.com/" target="_blank" title="Steam Store">
-      <img class="avatar" src="Steam.png" alt="Steam" /> Steam
+    <a href="https://store.steampowered.com/" target="_blank">
+      <img class="avatar" src="Controller.png" alt="Steam" /> Steam
     </a>
-
-    <!-- Toggle Spotify Player Button -->
-    <button id="toggleSpotify" aria-expanded="false" aria-controls="spotifyPlayer">
-      💡 Spotify Player
-    </button>
-
-    <!-- Spotify Player -->
-    <iframe 
-      id="spotifyPlayer"
-      src="https://open.spotify.com/embed/track/2dXsILW8gzkosqleHAvl0v?utm_source=generator&theme=0" 
-      height="152" frameBorder="0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
-      loading="lazy">
-    </iframe>
-
-    <!-- Dark/Light Toggle Button -->
-    <button id="toggleTheme" aria-pressed="false" style="margin-top: 15px;">
-      ⚙️ Dark/Light Mode
-    </button>
   </div>
+
+  <!-- Spotify Player -->
+  <iframe 
+    src="https://open.spotify.com/embed/track/2dXsILW8gzkosqleHAvl0v?utm_source=generator&theme=0" 
+    height="152" frameborder="0"
+    allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
+    loading="lazy">
+  </iframe>
 
   <!-- Click Sound -->
   <audio id="clickSound" src="https://freesound.org/data/previews/256/256113_3263906-lq.mp3"></audio>
+
   <script>
     const links = document.querySelectorAll('a');
     const sound = document.getElementById('clickSound');
     links.forEach(link => {
-      link.addEventListener('click', () => sound.play());
+      link.addEventListener('click', () => {
+        sound.currentTime = 0;
+        sound.play();
+      });
     });
 
-    // Spotify toggle
-    const toggleSpotifyBtn = document.getElementById('toggleSpotify');
-    const spotifyPlayer = document.getElementById('spotifyPlayer');
-    toggleSpotifyBtn.addEventListener('click', () => {
-      const isVisible = spotifyPlayer.classList.toggle('show');
-      toggleSpotifyBtn.setAttribute('aria-expanded', isVisible);
-      if(isVisible) {
-        spotifyPlayer.style.display = 'block';
-      } else {
-        spotifyPlayer.style.display = 'none';
-      }
+    // 3D Rotate mit Cursor
+    const container = document.getElementById('linktreeContainer');
+
+    document.addEventListener('mousemove', e => {
+      const x = (window.innerWidth / 2 - e.clientX) / 25;
+      const y = (window.innerHeight / 2 - e.clientY) / 25;
+      container.style.transform = `rotateY(${x}deg) rotateX(${y}deg)`;
     });
 
-    // Dark/Light Mode toggle
-    const toggleThemeBtn = document.getElementById('toggleTheme');
-    toggleThemeBtn.addEventListener('click', () => {
-      document.body.classList.toggle('light');
-      const isLight = document.body.classList.contains('light');
-      toggleThemeBtn.setAttribute('aria-pressed', isLight);
+    document.addEventListener('mouseleave', () => {
+      container.style.transform = `rotateY(0deg) rotateX(0deg)`;
     });
   </script>
 </body>
