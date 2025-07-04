@@ -23,7 +23,6 @@
     overflow: hidden;
     perspective: 1000px;
     animation: bgPulse 6s infinite alternate ease-in-out;
-    flex-direction: column;
   }
   @keyframes bgPulse {
     0% { background-color: #0a0a0a; }
@@ -38,7 +37,7 @@
     box-shadow: 0 0 25px rgba(72, 110, 127, 0.3);
     transition: transform 0.3s ease;
     position: relative;
-    width: 500px;
+    width: 500px;       /* neue Breite */
     max-width: 97%;
   }
   .container:hover {
@@ -54,6 +53,7 @@
     align-items: center;
     justify-content: center;
     gap: 10px;
+  }
   }
   p {
     margin-bottom: 30px;
@@ -143,24 +143,7 @@
     </a>
   </div>
 
-  <!-- 🔊 Click Sound -->
   <audio id="clickSound" src="https://freesound.org/data/previews/256/256113_3263906-lq.mp3"></audio>
   <script>
     const links = document.querySelectorAll('a');
-    const sound = document.getElementById('clickSound');
-    links.forEach(link => {
-      link.addEventListener('click', () => {
-        sound.play();
-      });
-    });
-  </script>
-
-  <!-- 🎵 Spotify Player -->
-  <iframe style="border-radius:12px; margin-top: 20px;" 
-    src="https://open.spotify.com/embed/track/2dXsILW8gzkosqleHAvl0v?utm_source=generator&theme=0" 
-    width="500" height="152" frameBorder="0" allowfullscreen="" 
-    allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
-    loading="lazy">
-  </iframe>
-</body>
-</html>
+    const sound = document.getElementById('clickS
