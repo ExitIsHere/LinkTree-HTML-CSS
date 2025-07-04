@@ -1,160 +1,220 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>ExitIsHere LinkTree</title>
-<link rel="icon" href="HighVoltage.png" type="image/png" />
-<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&display=swap" rel="stylesheet" />
-<style>
-  * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-  body {
-    background-color: #0a0a0a;
-    color: #fff;
-    font-family: 'Orbitron', sans-serif;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    overflow: hidden;
-    perspective: 1000px;
-    animation: bgPulse 6s infinite alternate ease-in-out;
-  }
-  @keyframes bgPulse {
-    0% { background-color: #0a0a0a; }
-    100% { background-color: #1c3642; }
-  }
-  .container {
-    background: rgba(10, 10, 10, 0.9);
-    border: 2px solid #486e7f;
-    padding: 40px;
-    border-radius: 20px;
-    text-align: center;
-    box-shadow: 0 0 25px rgba(72, 110, 127, 0.3);
-    transition: transform 0.3s ease;
-    position: relative;
-    width: 500px;       /* neue Breite */
-    max-width: 97%;
-  }
-  .container:hover {
-    transform: rotateX(5deg) rotateY(5deg) scale(1.05);
-    box-shadow: 0 0 40px #486e7f, 0 0 50px #486e7f inset;
-  }
-  h1 {
-    font-size: 2.5rem;
-    color: #fff;
-    text-shadow: 0 0 10px #486e7f;
-    margin-bottom: 20px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-  }
-  }
-  p {
-    margin-bottom: 30px;
-    font-size: 1.1rem;
-    color: #bbb;
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
-  }
-  a {
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-    margin: 10px;
-    padding: 12px 24px;
-    background-color: transparent;
-    border: 2px solid #486e7f;
-    color: #486e7f;
-    text-decoration: none;
-    border-radius: 14px;
-    font-weight: 600;
-    transition: all 0.35s ease;
-    box-shadow: 0 0 10px #486e7f;
-  }
-  a:hover {
-    background-color: #bbb;
-    color: #000;
-    transform: scale(1.15) rotate(-3deg);
-    box-shadow: 0 0 25px #486e7f, 0 0 35px #486e7f inset;
-  }
-  @media (max-width: 600px) {
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ExitIsHere LinkTree</title>
+  <link rel="icon" href="HighVoltage.png" type="image/png" />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&display=swap" rel="stylesheet" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
     body {
+      background-color: #0a0a0a;
+      color: #fff;
+      font-family: 'Orbitron', sans-serif;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      animation: bgPulse 6s infinite alternate ease-in-out;
       padding: 20px;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+    @keyframes bgPulse {
+      0% { background-color: #0a0a0a; }
+      100% { background-color: #1c3642; }
     }
     .container {
-      padding: 20px;
+      background: rgba(10, 10, 10, 0.9);
+      border: 2px solid #486e7f;
+      padding: 30px;
+      border-radius: 20px;
+      text-align: center;
+      box-shadow: 0 0 25px rgba(72, 110, 127, 0.3);
+      max-width: 500px;
       width: 100%;
+      transition: background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+      cursor: default;
     }
-    a {
-      padding: 10px 18px;
-      font-size: 1rem;
+    .container:hover {
+      transform: scale(1.02);
+      box-shadow: 0 0 40px #486e7f, 0 0 50px #486e7f inset;
+    }
+    h1, h2 {
+      color: #fff;
+      text-shadow: 0 0 10px #486e7f;
     }
     h1 {
       font-size: 2rem;
+      margin-bottom: 10px;
     }
-  }
-  .discord-avatar, .tiktok-avatar, .itchio-avatar, .valoranttracker-avatar {
-    width: 34px;
-    height: 34px;
-    border-radius: 50%;
-    border: 2px solid #bbb;
-    filter: drop-shadow(0 0 6px #486e7f);
-  }
-  .info p {
-    margin: 0;
-    line-height: 1.75;
-  }
- @keyframes glitch {
-  0% { text-shadow: 2px 0 red; }
-  20% { text-shadow: -2px 0 cyan; }
-  40% { text-shadow: 2px 2px lime; }
-  60% { text-shadow: -2px -2px red; }
-  80% { text-shadow: 0 0 cyan; }
-  100% { text-shadow: 2px 0 red; }
-}
-h1 {
-  animation: glitch 1s infinite;
-}
-</style>
+    h2 {
+      font-size: 1.2rem;
+      margin-bottom: 20px;
+    }
+    .info p {
+      font-size: 0.95rem;
+      color: #bbb;
+      margin: 5px 0;
+      text-transform: uppercase;
+    }
+    a, button {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin: 8px 0;
+      padding: 10px 20px;
+      background-color: transparent;
+      border: 2px solid #486e7f;
+      color: #486e7f;
+      text-decoration: none;
+      border-radius: 12px;
+      transition: all 0.3s ease;
+      box-shadow: 0 0 8px #486e7f;
+      font-weight: 600;
+      cursor: pointer;
+      font-family: 'Orbitron', sans-serif;
+      user-select: none;
+    }
+    a:hover, button:hover {
+      background-color: #bbb;
+      color: #000;
+      transform: scale(1.08);
+    }
+    .avatar {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      border: 2px solid #bbb;
+      filter: drop-shadow(0 0 6px #486e7f);
+    }
+    iframe {
+      margin-top: 20px;
+      border-radius: 12px;
+      width: 100%;
+      max-width: 500px;
+      display: none; /* initially hidden for toggle */
+      transition: opacity 0.3s ease;
+    }
+    iframe.show {
+      display: block;
+      opacity: 1;
+    }
+    /* Dark/Light Mode Styles */
+    body.light {
+      background-color: #f5f5f5;
+      color: #111;
+      animation: none;
+    }
+    body.light .container {
+      background: rgba(245, 245, 245, 0.9);
+      border-color: #486e7f;
+      box-shadow: 0 0 25px rgba(72, 110, 127, 0.3);
+    }
+    body.light h1, body.light h2 {
+      color: #486e7f;
+      text-shadow: none;
+    }
+    body.light .info p {
+      color: #555;
+    }
+    body.light a, body.light button {
+      border-color: #486e7f;
+      color: #486e7f;
+      box-shadow: none;
+      background-color: transparent;
+    }
+    body.light a:hover, body.light button:hover {
+      background-color: #486e7f;
+      color: #fff;
+      transform: scale(1.08);
+    }
+  </style>
 </head>
 <body>
   <div class="container">
     <h1>ExitIsHere</h1>
     <h2>Linktree</h2>
-    <br>
+
     <div class="info">
       <p>💀 14 YRS</p>
       <p>⚡ &lt;/&gt;</p>
     </div>
-    <br>
-    <a href="https://discord.com/users/934420792534499388" target="_blank" rel="noopener noreferrer">
-      <img class="discord-avatar" src="ExiT_3.png" alt="Profilbild" />
-      Discord
+
+    <a href="https://discord.com/users/934420792534499388" target="_blank">
+      <img class="avatar" src="ExiT_3.png" alt="Discord" /> Discord
     </a>
-    <br>
-    <a href="https://www.tiktok.com/@exitishere42" target="_blank" rel="noopener noreferrer">
-      <img class="tiktok-avatar" src="Tiktok.png" alt="TikTok" />
-      TikTok
+
+    <a href="https://www.tiktok.com/@exitishere42" target="_blank">
+      <img class="avatar" src="Tiktok.png" alt="TikTok" /> TikTok
     </a>
-    <br>
-    <a href="https://exitishere.itch.io/" target="_blank" rel="noopener noreferrer">
-      <img class="itchio-avatar" src="Controller.png" alt="Itch.io" />
-      Itch.io
+
+    <a href="https://exitishere.itch.io/" target="_blank">
+      <img class="avatar" src="Controller.png" alt="Itch.io" /> Itch.io
     </a>
-    <br>
-    <a href="https://tracker.gg/valorant/profile/riot/KarlDasLama%23FaKe/overview?platform=pc&playlist=competitive&season=ac12e9b3-47e6-9599-8fa1-0bb473e5efc7" target="_blank" rel="noopener noreferrer">
-      <img class="valoranttracker-avatar" src="Tracker.png" alt="Tracker" />
-      Valorant Tracker
+
+    <a href="https://tracker.gg/valorant/profile/riot/KarlDasLama%23FaKe/overview?platform=pc" target="_blank">
+      <img class="avatar" src="Tracker.png" alt="Valorant" /> Valorant Tracker
     </a>
+
+    <!-- Extra Button für Steam -->
+    <a href="https://store.steampowered.com/" target="_blank" title="Steam Store">
+      <img class="avatar" src="Steam.png" alt="Steam" /> Steam
+    </a>
+
+    <!-- Toggle Spotify Player Button -->
+    <button id="toggleSpotify" aria-expanded="false" aria-controls="spotifyPlayer">
+      💡 Spotify Player
+    </button>
+
+    <!-- Spotify Player -->
+    <iframe 
+      id="spotifyPlayer"
+      src="https://open.spotify.com/embed/track/2dXsILW8gzkosqleHAvl0v?utm_source=generator&theme=0" 
+      height="152" frameBorder="0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
+      loading="lazy">
+    </iframe>
+
+    <!-- Dark/Light Toggle Button -->
+    <button id="toggleTheme" aria-pressed="false" style="margin-top: 15px;">
+      ⚙️ Dark/Light Mode
+    </button>
   </div>
 
+  <!-- Click Sound -->
   <audio id="clickSound" src="https://freesound.org/data/previews/256/256113_3263906-lq.mp3"></audio>
   <script>
     const links = document.querySelectorAll('a');
-    const sound = document.getElementById('clickS
+    const sound = document.getElementById('clickSound');
+    links.forEach(link => {
+      link.addEventListener('click', () => sound.play());
+    });
+
+    // Spotify toggle
+    const toggleSpotifyBtn = document.getElementById('toggleSpotify');
+    const spotifyPlayer = document.getElementById('spotifyPlayer');
+    toggleSpotifyBtn.addEventListener('click', () => {
+      const isVisible = spotifyPlayer.classList.toggle('show');
+      toggleSpotifyBtn.setAttribute('aria-expanded', isVisible);
+      if(isVisible) {
+        spotifyPlayer.style.display = 'block';
+      } else {
+        spotifyPlayer.style.display = 'none';
+      }
+    });
+
+    // Dark/Light Mode toggle
+    const toggleThemeBtn = document.getElementById('toggleTheme');
+    toggleThemeBtn.addEventListener('click', () => {
+      document.body.classList.toggle('light');
+      const isLight = document.body.classList.contains('light');
+      toggleThemeBtn.setAttribute('aria-pressed', isLight);
+    });
+  </script>
+</body>
+</html>
