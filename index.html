@@ -32,10 +32,6 @@
     }
 
     .container {
-      perspective: 1000px;
-    }
-
-    .visual {
       background: rgba(10, 10, 10, 0.9);
       border: 2px solid #486e7f;
       padding: 30px;
@@ -44,13 +40,12 @@
       box-shadow: 0 0 25px rgba(72, 110, 127, 0.3);
       max-width: 500px;
       width: 100%;
-      transform-style: preserve-3d;
-      transition: transform 0.1s ease, box-shadow 0.3s ease;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
 
-    .container.hover .visual {
+    .container:hover {
+      transform: rotateX(3deg) rotateY(3deg) scale(1.02);
       box-shadow: 0 0 40px #486e7f, 0 0 50px #486e7f inset;
-      transform: scale(1.02);
     }
 
     h1, h2 {
@@ -112,44 +107,44 @@
       max-width: 500px;
       transition: filter 0.3s ease;
     }
-
-    .container.hover iframe {
-      filter: none;
-    }
   </style>
 </head>
 <body>
-  <div class="container" id="linktreeContainer">
-    <div class="visual">
-      <h1>ExitIsHere</h1>
-      <h2>Linktree</h2>
+  <div class="container">
+    <h1>ExitIsHere</h1>
+    <h2>Linktree</h2>
 
-      <div class="info">
-        <p>💀 14 YRS</p>
-        <p>⚡ &lt;/&gt;</p>
-      </div>
-
-      <a href="https://discord.com/users/934420792534499388" target="_blank">
-        <img class="avatar" src="ExiT_3.png" alt="Discord" /> Discord
-      </a>
-
-      <a href="https://www.tiktok.com/@exitishere42" target="_blank">
-        <img class="avatar" src="Tiktok.png" alt="TikTok" /> TikTok
-      </a>
-
-      <a href="https://exitishere.itch.io/" target="_blank">
-        <img class="avatar" src="Controller.png" alt="Itch.io" /> Itch.io
-      </a>
-
-      <a href="https://tracker.gg/valorant/profile/riot/KarlDasLama%23FaKe/overview?platform=pc" target="_blank">
-        <img class="avatar" src="Tracker.png" alt="Valorant" /> Valorant Tracker
-      </a>
-
-      <a href="https://store.steampowered.com/" target="_blank">
-        <img class="avatar" src="Controller.png" alt="Steam" /> Steam
-      </a>
+    <div class="info">
+      <p>💀 14 YRS</p>
+      <p>⚡ &lt;/&gt;</p>
     </div>
+
+    <a href="https://discord.com/users/934420792534499388" target="_blank">
+      <img class="avatar" src="ExiT_3.png" alt="Discord" /> Discord
+    </a>
+
+    <a href="https://www.tiktok.com/@exitishere42" target="_blank">
+      <img class="avatar" src="Tiktok.png" alt="TikTok" /> TikTok
+    </a>
+
+    <a href="https://exitishere.itch.io/" target="_blank">
+      <img class="avatar" src="Controller.png" alt="Itch.io" /> Itch.io
+    </a>
+
+    <a href="https://tracker.gg/valorant/profile/riot/KarlDasLama%23FaKe/overview?platform=pc" target="_blank">
+      <img class="avatar" src="Tracker.png" alt="Valorant" /> Valorant Tracker
+    </a>
   </div>
+
+  <!-- Click Sound -->
+  <audio id="clickSound" src="https://freesound.org/data/previews/256/256113_3263906-lq.mp3"></audio>
+  <script>
+    const links = document.querySelectorAll('a');
+    const sound = document.getElementById('clickSound');
+    links.forEach(link => {
+      link.addEventListener('click', () => sound.play());
+    });
+  </script>
 
   <!-- Spotify Player -->
   <iframe 
@@ -157,48 +152,5 @@
     height="152" frameBorder="0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
     loading="lazy">
   </iframe>
-
-  <!-- Click Sound -->
-  <audio id="clickSound" src="https://freesound.org/data/previews/256/256113_3263906-lq.mp3"></audio>
-
-  <script>
-    // Sound bei Link-Click
-    const links = document.querySelectorAll('a');
-    const sound = document.getElementById('clickSound');
-    links.forEach(link => {
-      link.addEventListener('click', () => sound.play());
-    });
-
-    // 3D-Rotation
-    const container = document.getElementById('linktreeContainer');
-    const visual = container.querySelector('.visual');
-    let isHovering = false;
-
-    container.addEventListener('mouseenter', () => {
-      isHovering = true;
-      container.classList.add("hover");
-    });
-
-    container.addEventListener('mouseleave', () => {
-      isHovering = false;
-      visual.style.transform = `rotateY(0deg) rotateX(0deg)`;
-      container.classList.remove("hover");
-    });
-
-    document.addEventListener('mousemove', e => {
-      if (!isHovering) return;
-
-      const centerX = window.innerWidth / 2;
-      const centerY = window.innerHeight / 2;
-      const offsetX = (e.clientX - centerX) / 25;
-      const offsetY = (e.clientY - centerY) / 25;
-
-      // Invertierte Rotation
-      const rotateY = -offsetX;
-      const rotateX = offsetY;
-
-      visual.style.transform = `rotateY(${rotateY}deg) rotateX(${rotateX}deg)`;
-    });
-  </script>
 </body>
 </html>
