@@ -17,6 +17,7 @@
     color: #fff;
     font-family: 'Orbitron', sans-serif;
     display: flex;
+    flex-direction: column; /* Wichtig: Items untereinander */
     justify-content: center;
     align-items: center;
     height: 100vh;
@@ -37,7 +38,7 @@
     box-shadow: 0 0 25px rgba(72, 110, 127, 0.3);
     transition: transform 0.3s ease;
     position: relative;
-    width: 500px;       /* neue Breite */
+    width: 500px;
     max-width: 97%;
   }
   .container:hover {
@@ -53,7 +54,6 @@
     align-items: center;
     justify-content: center;
     gap: 10px;
-  }
   }
   p {
     margin-bottom: 30px;
@@ -110,50 +110,65 @@
     margin: 0;
     line-height: 1.75;
   }
+  .spotify-container {
+    width: 500px;
+    max-width: 97%;
+    margin-top: 20px;
+  }
 </style>
 </head>
 <body>
   <div class="container">
     <h1>ExitIsHere</h1>
     <h2>Linktree</h2>
-    <br>
+    <br />
     <div class="info">
       <p>💀 14 YRS</p>
       <p>⚡ &lt;/&gt;</p>
     </div>
-    <br>
+    <br />
     <a href="https://discord.com/users/934420792534499388" target="_blank" rel="noopener noreferrer">
       <img class="discord-avatar" src="ExiT_3.png" alt="Profilbild" />
       Discord
     </a>
-    <br>
+    <br />
     <a href="https://www.tiktok.com/@exitishere42" target="_blank" rel="noopener noreferrer">
       <img class="tiktok-avatar" src="Tiktok.png" alt="TikTok" />
       TikTok
     </a>
-    <br>
+    <br />
     <a href="https://exitishere.itch.io/" target="_blank" rel="noopener noreferrer">
       <img class="itchio-avatar" src="Controller.png" alt="Itch.io" />
       Itch.io
     </a>
-    <br>
+    <br />
     <a href="https://tracker.gg/valorant/profile/riot/KarlDasLama%23FaKe/overview?platform=pc&playlist=competitive&season=ac12e9b3-47e6-9599-8fa1-0bb473e5efc7" target="_blank" rel="noopener noreferrer">
       <img class="valoranttracker-avatar" src="Tracker.png" alt="Tracker" />
       Valorant Tracker
     </a>
   </div>
-  <br>
-  <iframe style="border-radius:12px" 
-          src="https://open.spotify.com/embed/track/2dXsILW8gzkosqleHAvl0v?utm_source=generator&theme=0" 
-          width="100%" 
-          height="152" 
-          frameborder="0" 
-          allowfullscreen="" 
-          allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
-          loading="lazy">
-   </iframe>
+
+  <div class="spotify-container">
+    <iframe style="border-radius:12px" 
+            src="https://open.spotify.com/embed/track/2dXsILW8gzkosqleHAvl0v?utm_source=generator&theme=0" 
+            width="100%" 
+            height="152" 
+            frameborder="0" 
+            allowfullscreen="" 
+            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
+            loading="lazy">
+    </iframe>
+  </div>
 
   <audio id="clickSound" src="https://freesound.org/data/previews/256/256113_3263906-lq.mp3"></audio>
   <script>
     const links = document.querySelectorAll('a');
-    const sound = document.getElementById('clickS
+    const sound = document.getElementById('clickSound');
+    links.forEach(link => {
+      link.addEventListener('click', () => {
+        sound.play();
+      });
+    });
+  </script>
+</body>
+</html>
