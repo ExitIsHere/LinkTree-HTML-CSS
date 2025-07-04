@@ -38,10 +38,10 @@
       box-shadow: 0 0 25px rgba(72, 110, 127, 0.3);
       max-width: 500px;
       width: 100%;
-      transition: box-shadow 0.3s ease, transform 0.2s ease;
+      transition: box-shadow 0.3s ease, transform 0.1s ease;
       transform-style: preserve-3d;
     }
-    .container:hover {
+    .container.hover {
       box-shadow: 0 0 40px #486e7f, 0 0 50px #486e7f inset;
     }
     h1, h2 {
@@ -151,17 +151,33 @@
       });
     });
 
-    // 3D Rotate mit Cursor
     const container = document.getElementById('linktreeContainer');
+    let isHovering = false;
 
-    document.addEventListener('mousemove', e => {
-      const x = (window.innerWidth / 2 - e.clientX) / 25;
-      const y = (window.innerHeight / 2 - e.clientY) / 25;
-      container.style.transform = `rotateY(${x}deg) rotateX(${y}deg)`;
+    container.addEventListener('mouseenter', () => {
+      isHovering = true;
+      container.classList.add("hover");
     });
 
-    document.addEventListener('mouseleave', () => {
+    container.addEventListener('mouseleave', () => {
+      isHovering = false;
       container.style.transform = `rotateY(0deg) rotateX(0deg)`;
+      container.classList.remove("hover");
+    });
+
+    document.addEventListener('mousemove', e => {
+      if (!isHovering) return;
+
+      const centerX = window.innerWidth / 2;
+      const centerY = window.innerHeight / 2;
+      const offsetX = (e.clientX - centerX) / 25;
+      const offsetY = (e.clientY - centerY) / 25;
+
+      // invertiert:
+      const rotateY = -offsetX;
+      const rotateX = offsetY;
+
+      container.style.transform = `rotateY(${rotateY}deg) rotateX(${rotateX}deg)`;
     });
   </script>
 </body>
