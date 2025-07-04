@@ -1,128 +1,129 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>ExitIsHere LinkTree</title>
-  <link rel="icon" href="HighVoltage.png" type="image/png" />
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&display=swap" rel="stylesheet" />
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>ExitIsHere LinkTree</title>
+<link rel="icon" href="HighVoltage.png" type="image/png" />
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&display=swap" rel="stylesheet" />
+<style>
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  body {
+    background-color: #0a0a0a;
+    color: #fff;
+    font-family: 'Orbitron', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+    perspective: 1000px;
+    animation: bgPulse 6s infinite alternate ease-in-out;
+    flex-direction: column;
+  }
+  @keyframes bgPulse {
+    0% { background-color: #0a0a0a; }
+    100% { background-color: #1c3642; }
+  }
+  .container {
+    background: rgba(10, 10, 10, 0.9);
+    border: 2px solid #486e7f;
+    padding: 40px;
+    border-radius: 20px;
+    text-align: center;
+    box-shadow: 0 0 25px rgba(72, 110, 127, 0.3);
+    transition: transform 0.3s ease;
+    position: relative;
+    width: 500px;
+    max-width: 97%;
+  }
+  .container:hover {
+    transform: rotateX(5deg) rotateY(5deg) scale(1.05);
+    box-shadow: 0 0 40px #486e7f, 0 0 50px #486e7f inset;
+  }
+  h1 {
+    font-size: 2.5rem;
+    color: #fff;
+    text-shadow: 0 0 10px #486e7f;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+  }
+  p {
+    margin-bottom: 30px;
+    font-size: 1.1rem;
+    color: #bbb;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+  a {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    margin: 10px;
+    padding: 12px 24px;
+    background-color: transparent;
+    border: 2px solid #486e7f;
+    color: #486e7f;
+    text-decoration: none;
+    border-radius: 14px;
+    font-weight: 600;
+    transition: all 0.35s ease;
+    box-shadow: 0 0 10px #486e7f;
+  }
+  a:hover {
+    background-color: #bbb;
+    color: #000;
+    transform: scale(1.15) rotate(-3deg);
+    box-shadow: 0 0 25px #486e7f, 0 0 35px #486e7f inset;
+  }
+  @media (max-width: 600px) {
     body {
-      background-color: #0a0a0a;
-      color: #fff;
-      font-family: 'Orbitron', sans-serif;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      overflow: hidden;
-      animation: bgPulse 6s infinite alternate ease-in-out;
-      flex-direction: column;
-    }
-    @keyframes bgPulse {
-      0% { background-color: #0a0a0a; }
-      100% { background-color: #1c3642; }
+      padding: 20px;
     }
     .container {
-      background: rgba(10, 10, 10, 0.9);
-      border: 2px solid #486e7f;
-      padding: 40px;
-      border-radius: 20px;
-      text-align: center;
-      box-shadow: 0 0 25px rgba(72, 110, 127, 0.3);
-      width: 500px;
-      max-width: 97%;
-    }
-    h1 {
-      font-size: 2.5rem;
-      color: #fff;
-      text-shadow: 0 0 10px #486e7f;
-      margin-bottom: 20px;
-    }
-    h2 {
-      font-size: 1.5rem;
-      margin-bottom: 10px;
-      color: #aaa;
-    }
-    p {
-      margin-bottom: 30px;
-      font-size: 1.1rem;
-      color: #bbb;
-      letter-spacing: 0.05em;
-      text-transform: uppercase;
+      padding: 20px;
+      width: 100%;
     }
     a {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      margin: 10px;
-      padding: 12px 24px;
-      background-color: transparent;
-      border: 2px solid #486e7f;
-      color: #486e7f;
-      text-decoration: none;
-      border-radius: 14px;
-      font-weight: 600;
-      transition: all 0.3s ease;
-      box-shadow: 0 0 10px #486e7f;
+      padding: 10px 18px;
+      font-size: 1rem;
     }
-    a:hover {
-      background-color: #bbb;
-      color: #000;
-      transform: scale(1.15) rotate(-3deg);
-      box-shadow: 0 0 25px #486e7f, 0 0 35px #486e7f inset;
+    h1 {
+      font-size: 2rem;
     }
-    @media (max-width: 600px) {
-      body {
-        padding: 20px;
-      }
-      .container {
-        padding: 20px;
-        width: 100%;
-      }
-      a {
-        padding: 10px 18px;
-        font-size: 1rem;
-      }
-      h1 {
-        font-size: 2rem;
-      }
-    }
-    .discord-avatar, .tiktok-avatar, .itchio-avatar, .valoranttracker-avatar {
-      width: 34px;
-      height: 34px;
-      border-radius: 50%;
-      border: 2px solid #bbb;
-      filter: drop-shadow(0 0 6px #486e7f);
-    }
-    .info p {
-      margin: 0;
-      line-height: 1.75;
-    }
-    iframe {
-      margin-top: 20px;
-      border-radius: 12px;
-      width: 100%;
-      max-width: 500px;
-    }
-  </style>
+  }
+  .discord-avatar, .tiktok-avatar, .itchio-avatar, .valoranttracker-avatar {
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    border: 2px solid #bbb;
+    filter: drop-shadow(0 0 6px #486e7f);
+  }
+  .info p {
+    margin: 0;
+    line-height: 1.75;
+  }
+</style>
 </head>
 <body>
   <div class="container">
     <h1>ExitIsHere</h1>
     <h2>Linktree</h2>
+    <br>
     <div class="info">
       <p>💀 14 YRS</p>
       <p>⚡ &lt;/&gt;</p>
     </div>
     <br>
     <a href="https://discord.com/users/934420792534499388" target="_blank" rel="noopener noreferrer">
-      <img class="discord-avatar" src="ExiT_3.png" alt="Discord" />
+      <img class="discord-avatar" src="ExiT_3.png" alt="Profilbild" />
       Discord
     </a>
     <br>
@@ -136,8 +137,8 @@
       Itch.io
     </a>
     <br>
-    <a href="https://tracker.gg/valorant/profile/riot/KarlDasLama%23FaKe/overview?platform=pc" target="_blank" rel="noopener noreferrer">
-      <img class="valoranttracker-avatar" src="Tracker.png" alt="Valorant" />
+    <a href="https://tracker.gg/valorant/profile/riot/KarlDasLama%23FaKe/overview?platform=pc&playlist=competitive&season=ac12e9b3-47e6-9599-8fa1-0bb473e5efc7" target="_blank" rel="noopener noreferrer">
+      <img class="valoranttracker-avatar" src="Tracker.png" alt="Tracker" />
       Valorant Tracker
     </a>
   </div>
@@ -155,9 +156,10 @@
   </script>
 
   <!-- 🎵 Spotify Player -->
-  <iframe 
+  <iframe style="border-radius:12px; margin-top: 20px;" 
     src="https://open.spotify.com/embed/track/2dXsILW8gzkosqleHAvl0v?utm_source=generator&theme=0" 
-    height="152" frameBorder="0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
+    width="500" height="152" frameBorder="0" allowfullscreen="" 
+    allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
     loading="lazy">
   </iframe>
 </body>
