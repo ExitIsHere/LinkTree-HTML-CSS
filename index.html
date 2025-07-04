@@ -12,95 +12,98 @@
       padding: 0;
       box-sizing: border-box;
     }
-
     body {
       background-color: #0a0a0a;
       color: #fff;
       font-family: 'Orbitron', sans-serif;
       display: flex;
-      flex-direction: column;
       justify-content: center;
       align-items: center;
-      min-height: 100vh;
+      height: 100vh;
+      overflow: hidden;
       animation: bgPulse 6s infinite alternate ease-in-out;
-      padding: 20px;
+      flex-direction: column;
     }
-
     @keyframes bgPulse {
       0% { background-color: #0a0a0a; }
       100% { background-color: #1c3642; }
     }
-
     .container {
       background: rgba(10, 10, 10, 0.9);
       border: 2px solid #486e7f;
-      padding: 30px;
+      padding: 40px;
       border-radius: 20px;
       text-align: center;
       box-shadow: 0 0 25px rgba(72, 110, 127, 0.3);
-      max-width: 500px;
-      width: 100%;
-      transition: transform 0.3s ease;
+      width: 500px;
+      max-width: 97%;
     }
-
-    .container:hover {
-      transform: scale(1.02);
-      box-shadow: 0 0 40px #486e7f, 0 0 50px #486e7f inset;
-    }
-
-    h1, h2 {
+    h1 {
+      font-size: 2.5rem;
       color: #fff;
       text-shadow: 0 0 10px #486e7f;
-    }
-
-    h1 {
-      font-size: 2rem;
-      margin-bottom: 10px;
-    }
-
-    h2 {
-      font-size: 1.2rem;
       margin-bottom: 20px;
     }
-
-    .info p {
-      font-size: 0.95rem;
+    h2 {
+      font-size: 1.5rem;
+      margin-bottom: 10px;
+      color: #aaa;
+    }
+    p {
+      margin-bottom: 30px;
+      font-size: 1.1rem;
       color: #bbb;
-      margin: 5px 0;
+      letter-spacing: 0.05em;
       text-transform: uppercase;
     }
-
     a {
       display: inline-flex;
       align-items: center;
       gap: 10px;
-      margin: 8px 0;
-      padding: 10px 20px;
+      margin: 10px;
+      padding: 12px 24px;
       background-color: transparent;
       border: 2px solid #486e7f;
       color: #486e7f;
       text-decoration: none;
-      border-radius: 12px;
-      transition: all 0.3s ease;
-      box-shadow: 0 0 8px #486e7f;
+      border-radius: 14px;
       font-weight: 600;
+      transition: all 0.3s ease;
+      box-shadow: 0 0 10px #486e7f;
     }
-
     a:hover {
       background-color: #bbb;
       color: #000;
       transform: scale(1.15) rotate(-3deg);
       box-shadow: 0 0 25px #486e7f, 0 0 35px #486e7f inset;
     }
-
-    .avatar {
-      width: 30px;
-      height: 30px;
+    @media (max-width: 600px) {
+      body {
+        padding: 20px;
+      }
+      .container {
+        padding: 20px;
+        width: 100%;
+      }
+      a {
+        padding: 10px 18px;
+        font-size: 1rem;
+      }
+      h1 {
+        font-size: 2rem;
+      }
+    }
+    .discord-avatar, .tiktok-avatar, .itchio-avatar, .valoranttracker-avatar {
+      width: 34px;
+      height: 34px;
       border-radius: 50%;
       border: 2px solid #bbb;
       filter: drop-shadow(0 0 6px #486e7f);
     }
-
+    .info p {
+      margin: 0;
+      line-height: 1.75;
+    }
     iframe {
       margin-top: 20px;
       border-radius: 12px;
@@ -113,40 +116,45 @@
   <div class="container">
     <h1>ExitIsHere</h1>
     <h2>Linktree</h2>
-
     <div class="info">
       <p>💀 14 YRS</p>
       <p>⚡ &lt;/&gt;</p>
     </div>
-
-    <a href="https://discord.com/users/934420792534499388" target="_blank">
-      <img class="avatar" src="ExiT_3.png" alt="Discord" /> Discord
+    <br>
+    <a href="https://discord.com/users/934420792534499388" target="_blank" rel="noopener noreferrer">
+      <img class="discord-avatar" src="ExiT_3.png" alt="Discord" />
+      Discord
     </a>
-
-    <a href="https://www.tiktok.com/@exitishere42" target="_blank">
-      <img class="avatar" src="Tiktok.png" alt="TikTok" /> TikTok
+    <br>
+    <a href="https://www.tiktok.com/@exitishere42" target="_blank" rel="noopener noreferrer">
+      <img class="tiktok-avatar" src="Tiktok.png" alt="TikTok" />
+      TikTok
     </a>
-
-    <a href="https://exitishere.itch.io/" target="_blank">
-      <img class="avatar" src="Controller.png" alt="Itch.io" /> Itch.io
+    <br>
+    <a href="https://exitishere.itch.io/" target="_blank" rel="noopener noreferrer">
+      <img class="itchio-avatar" src="Controller.png" alt="Itch.io" />
+      Itch.io
     </a>
-
-    <a href="https://tracker.gg/valorant/profile/riot/KarlDasLama%23FaKe/overview?platform=pc" target="_blank">
-      <img class="avatar" src="Tracker.png" alt="Valorant" /> Valorant Tracker
+    <br>
+    <a href="https://tracker.gg/valorant/profile/riot/KarlDasLama%23FaKe/overview?platform=pc" target="_blank" rel="noopener noreferrer">
+      <img class="valoranttracker-avatar" src="Tracker.png" alt="Valorant" />
+      Valorant Tracker
     </a>
   </div>
 
-  <!-- Click Sound -->
+  <!-- 🔊 Click Sound -->
   <audio id="clickSound" src="https://freesound.org/data/previews/256/256113_3263906-lq.mp3"></audio>
   <script>
     const links = document.querySelectorAll('a');
     const sound = document.getElementById('clickSound');
     links.forEach(link => {
-      link.addEventListener('click', () => sound.play());
+      link.addEventListener('click', () => {
+        sound.play();
+      });
     });
   </script>
 
-  <!-- Spotify Player -->
+  <!-- 🎵 Spotify Player -->
   <iframe 
     src="https://open.spotify.com/embed/track/2dXsILW8gzkosqleHAvl0v?utm_source=generator&theme=0" 
     height="152" frameBorder="0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
