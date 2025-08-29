@@ -40,9 +40,10 @@ Instead of using ready-made stuff like LinkTree, I built everything myself so I 
 🚀 Try It Yourself
 
 If you want, you can clone the repo and use it for yourself. Copy this command into your terminal:
-
+```bash
+# Copy this command into your terminal
 git clone https://github.com/ExitIsHere/LinkTree-HTML-CSS.git
-
+```
 Then just open index.html in your browser.
 After that, you can edit the links, change the design, or add more scripts to make it your own.
 
