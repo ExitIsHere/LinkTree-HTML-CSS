@@ -17,7 +17,7 @@ It’s not just a basic static page: I added scripts and styling to make it more
 
 🎨 Features
 
-Built only with HTML, CSS & JS (no frameworks).
+Built only with HTML, CSS & JS.
 
 Clean layout with hover effects and animations.
 
