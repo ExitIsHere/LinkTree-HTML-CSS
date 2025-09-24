@@ -1,7 +1,7 @@
 LinkTree HTML/CSS
 
 Made by a 14-year-old dev (btw that’s me 😉)
-
+[![Netlify Status](https://api.netlify.com/api/v1/badges/9ac04dcb-57af-484e-9f4c-143cc6729097/deploy-status)](https://app.netlify.com/projects/exitishere/deploys)
 
 ---
 
